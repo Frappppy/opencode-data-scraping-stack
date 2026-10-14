@@ -1,6 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "$comment": "Template. Merge into ~/.config/opencode/opencode.json (global) or project opencode.json. Set keys via environment variables — never inline real values.",
+  "$comment": "Template. Merge into ~/.config/opencode/opencode.jsonc (global) or project opencode.json. install.ps1 -Link does this merge for you. Set keys via environment variables - never inline real values. Agents/skills/commands auto-load from ~/.config/opencode/; the scrape-navigator plugin auto-loads from ~/.config/opencode/plugins/.",
+  "default_agent": "navigator",
+  "instructions": [
+    "C:/Users/YOUR_USER/.config/opencode/instructions/scraping.md",
+    "C:/Users/YOUR_USER/.config/opencode/instructions/subagents.md"
+  ],
   "mcp": {
     "servers": {
       "firecrawl": {

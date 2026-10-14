@@ -5,7 +5,7 @@ param(
     [string]$Format = "markdown"
 )
 $ErrorActionPreference = "Stop"
-$stack = "D:\Code\Data Scraping"
+$stack = Split-Path -Parent $PSScriptRoot
 $py = Join-Path $stack ".venv\Scripts\python.exe"
 if (-not (Test-Path $py)) {
     Write-Host "venv missing. Run: powershell -File $stack\install.ps1" -ForegroundColor Red

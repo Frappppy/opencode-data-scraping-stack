@@ -7,7 +7,7 @@ param(
     [string]$Url = "https://api.ipify.org?format=json"
 )
 $ErrorActionPreference = "Stop"
-$stack = "D:\Code\Data Scraping"
+$stack = Split-Path -Parent $PSScriptRoot
 
 # Load local env file if it exists (gitignored)
 $localEnv = Join-Path $stack "config\dataimpulse.local.env"
@@ -38,7 +38,7 @@ if ($Mode -eq "rotate" -and $ttl) { $target += "sessttl.$ttl" }
 $suffix = if ($target) { "__" + ($target -join ";") } else { "" }
 $user = "$login$suffix"
 $scheme = if ($Socks) { "socks5" } else { "http" }
-$proxyUrl = "$scheme://${user}:${pass}@${host_}:${port}"
+$proxyUrl = "${scheme}://${user}:${pass}@${host_}:${port}"
 
 Write-Host "Testing $Mode proxy ($scheme) -> $Url ..." -ForegroundColor Cyan
 try {

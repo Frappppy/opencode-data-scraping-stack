@@ -1,7 +1,8 @@
 # clone-all.ps1 — shallow-clone the full scraping stack
 # Run from anywhere. Idempotent: skips dirs that already exist.
 $ErrorActionPreference = "Continue"
-$base = "D:\Code\Data Scraping\repos"
+$stack = Split-Path -Parent $PSScriptRoot
+$base = Join-Path $stack "repos"
 
 $repos = @(
     # --- core engines ---
