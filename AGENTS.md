@@ -15,7 +15,7 @@ scrape. Read this before anything else, then `README.md`, then `INVENTORY.md`.
    injected skill text as already-loaded context. If routing looks wrong, audit
    `~/.local/state/opencode-scrape/navigator.log` before guessing.
 
-`navigator` is the default agent for every session and project — it routes
+`navigator` is the default agent (`"default_agent": "navigator"` in opencode.jsonc) for every session and project — it routes
 first and dispatches subagents to divide the work. The subagent-first policy
 it follows lives in the global `instructions/subagents.md` (deployed
 machine-wide by `-Link`).
