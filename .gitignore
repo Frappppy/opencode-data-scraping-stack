@@ -1,0 +1,35 @@
+# === Credentials — never commit ===
+.env
+.env.*
+*.pat
+pat
+*token*
+*secret*
+*password*
+*credential*
+dataimpulse.local.*
+
+# === Third-party cloned repos (re-fetch with scripts/clone-all.ps1) ===
+repos/
+
+# === Python / Node build noise ===
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+node_modules/
+*.egg-info/
+.pytest_cache/
+
+# === Runtime output & workspaces (per-job data stays local) ===
+output/
+jobs/
+*.log
+
+# === Editor / OS ===
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/

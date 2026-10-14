@@ -1,0 +1,59 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "$comment": "Template. Merge into ~/.config/opencode/opencode.json (global) or project opencode.json. Set keys via environment variables — never inline real values.",
+  "mcp": {
+    "servers": {
+      "firecrawl": {
+        "type": "local",
+        "command": ["npx", "-y", "firecrawl-mcp"],
+        "environment": {
+          "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+        }
+      },
+      "firecrawl-keyless": {
+        "type": "remote",
+        "url": "https://mcp.firecrawl.dev/v2/mcp",
+        "$comment": "No key needed. Only 3 tools (scrape/search/parse). Enable when FIRECRAWL_API_KEY is unset."
+      },
+      "playwright": {
+        "type": "local",
+        "command": ["npx", "-y", "@playwright/mcp@latest"],
+        "environment": {
+          "PLAYWRIGHT_BROWSERS_PATH": "${PLAYWRIGHT_BROWSERS_PATH}"
+        }
+      },
+      "brightdata": {
+        "type": "local",
+        "command": ["npx", "-y", "@brightdata/mcp"],
+        "environment": {
+          "API_TOKEN": "${BRIGHTDATA_API_TOKEN}"
+        },
+        "$comment": "Free tier 5k req/mo. 1200+ prebuilt scrapers (Amazon/LinkedIn/TikTok). CAPTCHA handled."
+      },
+      "webmesh": {
+        "type": "local",
+        "command": ["npx", "-y", "webmesh-mcp"],
+        "$comment": "Token-economical tiered fetch + BFS crawl + robots.txt. No key."
+      },
+      "scrapelab": {
+        "type": "local",
+        "command": ["python", "-m", "scrapelab_mcp"],
+        "$comment": "Optional stealth browser (84 tools, nodriver-based). For Cloudflare/DataDome targets only. Enable after: pip install -r repos/mcp-servers/scrapelab-mcp/requirements.txt"
+      }
+    }
+  },
+  "references": {
+    "crawl4ai-docs": {
+      "path": "repos/core/crawl4ai",
+      "description": "Crawl4AI source + docs. Read before writing crawler code: AsyncWebCrawler, CrawlerRunConfig, extraction strategies, proxy config."
+    },
+    "scrapling-docs": {
+      "path": "repos/core/scrapling",
+      "description": "Scrapling source + docs. Adaptive self-healing selectors, Fetcher/StealthyFetcher. Read before hardcoding CSS selectors."
+    },
+    "firecrawl-mcp-docs": {
+      "path": "repos/mcp-servers/firecrawl-mcp-server",
+      "description": "Firecrawl MCP server tool reference: scrape/map/crawl/search/interact/agent and when to route to each."
+    }
+  }
+}
